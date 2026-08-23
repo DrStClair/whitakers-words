@@ -30,8 +30,7 @@ PROGRAMMES := makedict makeefil makeewds makeinfl makestem meanings wakedict \
   words
 
 .PHONY: all
-
-all: commands data
+all: commands sorter data
 
 # This target is more efficient than separate gprbuild runs because
 # the dependency graph is only constructed once.
@@ -45,6 +44,7 @@ commands: $(generated_sources)
 $(PROGRAMMES): $(generated_sources)
 	$(GPRBUILD) -p $(GPRBUILD_OPTIONS) commands.gpr $@
 
+# Builds the tools in src/tools (including sorter)
 .PHONY: sorter
 sorter: $(generated_sources)
 	$(GPRBUILD) -p $(GPRBUILD_OPTIONS) tools.gpr $@
@@ -83,16 +83,13 @@ GENERATED_DATA_FILES := DICTFILE.GEN STEMFILE.GEN INDXFILE.GEN EWDSLIST.GEN \
 					INFLECTS.SEC EWDSFILE.GEN STEMLIST.GEN
 
 .PHONY: data
-
 data: $(GENERATED_DATA_FILES)
 
 .PHONY: clean_data
-
 clean_data:
 	rm -f $(GENERATED_DATA_FILES) CHECKEWD.
 
 .PHONY: clean
-
 clean: clean_data
 	rm -fr bin lib obj
 	rm -f WORK. STEMLIST_generated.GEN STEMLIST_new.GEN $(generated_sources)
@@ -101,7 +98,6 @@ $(generated_sources): %: %.in Makefile
 	sed 's|@datadir@|$(datadir)|' $< > $@
 
 .PHONY: test
-
 test: all
 	cd test && ./run-tests.sh
 
