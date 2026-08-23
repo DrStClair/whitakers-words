@@ -45,8 +45,8 @@ $(PROGRAMMES): $(generated_sources)
 	$(GPRBUILD) -p $(GPRBUILD_OPTIONS) commands.gpr $@
 
 TOOLS := check dictflag dictord dictpage fil2dict fixord invert \
-  invstems linedict linefile listdict listord number oners page2htm \
-  patch slash sorter uniqpage
+	invstems linedict linefile listdict listord number oners page2htm \
+	patch slash sorter uniqpage
   
 # Builds the sorter tool used to generate STEMLIST
 .PHONY: $(TOOLS)
@@ -56,23 +56,23 @@ $(TOOLS): $(generated_sources)
 .PHONY: tools
 tools: $(generated_sources)
 	$(GPRBUILD) -p $(GPRBUILD_OPTIONS) tools.gpr
-	
+
 # Executable targets are phony (see above), so we tell Make to only
 # check that they exist but ignore the timestamp.  This is not
 # perfect, but at least Make
 # * updates the output data if the input data changes
 # * builds the generator if it does not exist yet
 
-DICTFILE.GEN: DICTLINE.GEN | wakedict
+DICTFILE.GEN STEMLIST_generated.GEN: DICTLINE.GEN | wakedict
 	echo g | bin/wakedict $<
 	mv STEMLIST.GEN STEMLIST_generated.GEN
 
-STEMLIST.GEN: DICTLINE.GEN | sorter
+STEMLIST.GEN: DICTLINE.GEN STEMLIST_generated.GEN | sorter
 	rm -f -- $@
 	bin/sorter < stemlist-sort.txt
 	mv -f -- STEMLIST_new.GEN $@
 	rm -f STEMLIST_generated.GEN
-	rm -f WORK.
+	rm -f WORK.WRK
 
 EWDSFILE.GEN: EWDSLIST.GEN | makeefil
 	bin/makeefil
@@ -93,14 +93,21 @@ GENERATED_DATA_FILES := DICTFILE.GEN STEMLIST.GEN EWDSFILE.GEN \
 .PHONY: data
 data: $(GENERATED_DATA_FILES)
 
+#Remove working file from makeewds
 .PHONY: clean_data
 clean_data:
-	rm -f $(GENERATED_DATA_FILES) CHECKEWD.
+	rm -f $(GENERATED_DATA_FILES) CHECKEWD.WRK
 
+#Remove all but executable files
+.PHONY: clean_build
+clean_build: clean_data
+	rm -fr lib obj
+	rm -f WORK.WRK STEMLIST_generated.GEN STEMLIST_new.GEN $(generated_sources)
+
+#Remove everything generated including executable files
 .PHONY: clean
-clean: clean_data
-	rm -fr bin lib obj
-	rm -f WORK. STEMLIST_generated.GEN STEMLIST_new.GEN $(generated_sources)
+clean: clean_build
+	rm -fr bin
 
 $(generated_sources): %: %.in Makefile
 	sed 's|@datadir@|$(datadir)|' $< > $@
