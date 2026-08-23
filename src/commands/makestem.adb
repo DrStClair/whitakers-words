@@ -52,12 +52,13 @@ procedure Makestem is
            (Bbll (Ch (Ch'First), Ch (Ch'First + 1), D_K) >=
             Bblf (Ch (Ch'First), Ch (Ch'First + 1), D_K))
          then
-            Put ("CH = ("); Put (Ch); Put (") index is of range  ");
-            Put (Bblf (Ch (Ch'First), Ch (Ch'First + 1), D_K));
-            Put (" .. "); Put (Bbll (Ch (Ch'First), Ch (Ch'First + 1), D_K));
+            Put ("CH ("); Put (Ch); Put (") index range ");
+            Put (Bblf (Ch (Ch'First), Ch (Ch'First + 1), D_K), 10);
+            Put (" .. ");
+            Put (Bbll (Ch (Ch'First), Ch (Ch'First + 1), D_K), 10);
             Put ("    number ");
             Put (Bbll (Ch (Ch'First), Ch (Ch'First + 1), D_K) -
-                 Bblf (Ch (Ch'First), Ch (Ch'First + 1), D_K) + 1);
+                 Bblf (Ch (Ch'First), Ch (Ch'First + 1), D_K) + 1, 10);
             New_Line;
          end if;
       elsif Ch (Ch'First + 1) = ' '  then
@@ -65,23 +66,24 @@ procedure Makestem is
            (Bdll (Ch (Ch'First), Ch (Ch'First + 1), D_K) >=
             Bdlf (Ch (Ch'First), Ch (Ch'First + 1), D_K))
          then
-            Put ("CH = ("); Put (Ch); Put (") index is of range  ");
-            Put (Bdlf (Ch (Ch'First), Ch (Ch'First + 1), D_K));
-            Put (" .. "); Put (Bdll (Ch (Ch'First), Ch (Ch'First + 1), D_K));
+            Put ("CH ("); Put (Ch); Put (") index range  ");
+            Put (Bdlf (Ch (Ch'First), Ch (Ch'First + 1), D_K), 10);
+            Put (" .. ");
+            Put (Bdll (Ch (Ch'First), Ch (Ch'First + 1), D_K), 10);
             Put ("    number ");
             Put (Bdll (Ch (Ch'First), Ch (Ch'First + 1), D_K) -
-                 Bdlf (Ch (Ch'First), Ch (Ch'First + 1), D_K) + 1);
+                 Bdlf (Ch (Ch'First), Ch (Ch'First + 1), D_K) + 1, 10);
             New_Line;
          end if;
       else
          if (First_Index (Wd, D_K) > 0) and then
            (Last_Index (Wd, D_K) >= First_Index (Wd, D_K))
          then
-            Put ("CH = ("); Put (Wd); Put (") index is of range  ");
-            Put (First_Index (Wd, D_K));
-            Put (" .. "); Put (Last_Index (Wd, D_K));
+            Put ("CH ("); Put (Wd); Put (") index range  ");
+            Put (First_Index (Wd, D_K), 10);
+            Put (" .. "); Put (Last_Index (Wd, D_K), 10);
             Put ("    number ");
-            Put (Last_Index (Wd, D_K) - First_Index (Wd, D_K) + 1);
+            Put (Last_Index (Wd, D_K) - First_Index (Wd, D_K) + 1, 10);
             New_Line;
          end if;
       end if;
