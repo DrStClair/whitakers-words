@@ -67,7 +67,7 @@ is
          Scroll_Line_Number :=
            Integer (Ada.Text_IO.Line (Ada.Text_IO.Standard_Output));
          Preface.New_Line;
-         Preface.Put ("=>");
+         Preface.Put ("=> ");
       end if;
 
       Line := Blank_Line;
@@ -77,7 +77,7 @@ is
          --LINE_NUMBER := LINE_NUMBER + 1;
          if Name (Current_Input) = Name (Standard_Input) then
             --  INPUT is keyboard
-            Preface.Put ("Blank exits =>");
+            Preface.Put ("Blank exits => ");
             Get_Line (Line, L);
             -- Second try
             if (L = 0) or else (Trim (Line (1 .. L)) = "")  then
