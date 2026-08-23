@@ -30,7 +30,7 @@ PROGRAMMES := makedict makeefil makeewds makeinfl makestem meanings wakedict \
   words
 
 .PHONY: all
-all: commands sorter data
+all: commands tools data
 
 # This target is more efficient than separate gprbuild runs because
 # the dependency graph is only constructed once.
@@ -39,16 +39,24 @@ commands: $(generated_sources)
 	$(GPRBUILD) -p $(GPRBUILD_OPTIONS) commands.gpr
 
 # Targets delegated to gprbuild are declared phony even if they build
-# concrete files, because Make ignores all about Ada dependencies.
+# concrete files, because Make ignores all about Ada depenencies.
 .PHONY: $(PROGRAMMES)
 $(PROGRAMMES): $(generated_sources)
 	$(GPRBUILD) -p $(GPRBUILD_OPTIONS) commands.gpr $@
 
-# Builds the tools in src/tools (including sorter)
-.PHONY: sorter
-sorter: $(generated_sources)
+TOOLS := check dictflag dictord dictpage fil2dict fixord invert \
+  invstems linedict linefile listdict listord number oners page2htm \
+  patch slash sorter uniqpage
+  
+# Builds the sorter tool used to generate STEMLIST
+.PHONY: $(TOOLS)
+$(TOOLS): $(generated_sources)
 	$(GPRBUILD) -p $(GPRBUILD_OPTIONS) tools.gpr $@
 
+.PHONY: tools
+tools: $(generated_sources)
+	$(GPRBUILD) -p $(GPRBUILD_OPTIONS) tools.gpr
+	
 # Executable targets are phony (see above), so we tell Make to only
 # check that they exist but ignore the timestamp.  This is not
 # perfect, but at least Make
@@ -80,7 +88,7 @@ STEMFILE.GEN INDXFILE.GEN: STEMLIST.GEN | makestem
 	echo g | bin/makestem $<
 
 GENERATED_DATA_FILES := DICTFILE.GEN STEMFILE.GEN INDXFILE.GEN EWDSLIST.GEN \
-					INFLECTS.SEC EWDSFILE.GEN STEMLIST.GEN
+  INFLECTS.SEC EWDSFILE.GEN STEMLIST.GEN
 
 .PHONY: data
 data: $(GENERATED_DATA_FILES)
