@@ -56,9 +56,8 @@ procedure Makestem is
             Put (Bblf (Ch (Ch'First), Ch (Ch'First + 1), D_K));
             Put (" .. "); Put (Bbll (Ch (Ch'First), Ch (Ch'First + 1), D_K));
             Put ("    number ");
-            Put
-              (Bbll (Ch (Ch'First), Ch (Ch'First + 1), D_K) -
-               Bblf (Ch (Ch'First), Ch (Ch'First + 1), D_K) + 1);
+            Put (Bbll (Ch (Ch'First), Ch (Ch'First + 1), D_K) -
+                 Bblf (Ch (Ch'First), Ch (Ch'First + 1), D_K) + 1);
             New_Line;
          end if;
       elsif Ch (Ch'First + 1) = ' '  then
@@ -109,6 +108,7 @@ begin
       Bbll (' ', ' ', General) := 0;
       Line := Blanks;
       Get_Line (Stem_List (D_K), Line, Last);
+      New_Line;
       Put_Line (Line (1 .. Last));
 
       Fc := Line (1);
