@@ -650,7 +650,7 @@ begin
       Create (Output, Out_File, "EWDSLIST." & Ext (D_K));
 
       if Checking  then
-         Create (Check, Out_File, "CHECKEWD.");
+         Create (Check, Out_File, "CHECKEWD.WRK");
       end if;
 
       --PUT_LINE ("CREATED");
