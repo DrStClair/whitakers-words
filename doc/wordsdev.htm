@@ -1,0 +1,324 @@
+<html>
+
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2N_sDSC0" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=o9P2E1FK" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://archives.nd.edu/whitaker/old/wordsdev.htm","20230328161654","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1680020214");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>WORDS - DEVELOPMENT/REHOSTING</title>
+</head>
+<body>
+
+<p>
+
+<h1>WORDS - Version 1.97FC<br>
+LATIN DICTIONARY PROGRAM <br>
+DEVELOPERS/REHOSTERS PAGE</h1>
+<h2>William Whitaker</h2>
+<hr>
+<h2>WORDSALL and TOOLS</h2>
+<p>
+<h3>This page provides the Ada source code for a Latin dictionary 
+program for the PC, and the dictionary material sufficient to re-host
+to other systems.  
+<br>
+Instructions below:  </h3>
+
+<h3>
+The WORDS System</h3>
+<p>
+There is a <a href="wordsall.zip"><b>wordsall.zip</b></a> 
+zip of all the Ada source files to port WORDS, and 
+support programs and data to generate the necessary dictionaries and 
+inflections for re-hosting the WORDS Latin dictionary 
+parsing/translation system on any machine with an Ada 95 compiler.  (It 
+can be made to work with Ada 83 also by replacing just the short driver routine.) 
+<p>
+This a console program (keyboard entry), without fancy Windows GUI, and has
+thereby been made system independent.  
+<p>
+WORDSALL contains the Ada source files for WORDS 
+
+<pre>
+strings_package.ads
+strings_package.adb
+latin_file_names.ads
+latin_file_names.adb
+config.ads
+preface.ads
+word_parameters.ads
+developer_parameters.ads
+preface.adb
+put_stat.adb
+word_parameters.adb
+inflections_package.adb
+inflections_package.ads
+dictionary_package.ads
+dictionary_package.adb
+addons_package.ads
+addons_package.adb
+uniques_package.ads
+word_support_package.ads
+word_support_package.adb
+english_support package.ads
+english_support package.adb
+word_package.ads
+line_stuff.ads
+line_stuff.adb
+developer_parameters.adb
+tricks_package.ads
+word_package.adb
+tricks_package.adb
+list_package.ads
+list_sweep.adb      
+dictionary_form.adb
+search_english.adb
+put_example_line.adb
+list_package.adb
+parse.adb
+words.adb
+</pre>
+
+<p>
+four supporting programs 
+
+<pre>
+makedict.adb
+makestem.adb
+makeinfl.adb
+makeefil.adb
+</pre>
+
+<p>
+and DOS ASCII data files for them to act upon to produce WORDS data files 
+
+<pre>
+DICTLINE.GEN
+STEMLIST.GEN
+EWDSLIST.GEN
+INFLECTS.LAT
+</pre>
+
+<p>
+the other WORDS DOS ASCII supporting files 
+
+<pre>
+ADDONS.LAT
+UNIQUES.LAT
+</pre>
+
+<p>
+<p>
+The process is to download the 197ESALL.ZIP (case sensitive) and unzip into a  
+subdirectory.  (If the zip form is unsuitable for your system, I can 
+provide the files in an uncompressed form.) The wordy file names are for 
+compliance with the restrictions of the GNAT system.  They may be renamed,
+and I can provide an alternative.  However, the long file names demand an 
+UNZIP that preserves them, if GNAT is to be used.  
+
+<p>For example, in a GNAT 
+environment (one would maximally optimize the main program): 
+
+<pre>
+gnatmake -O3 words
+gnatmake makedict
+gnatmake makestem
+gnatmake makeefil
+gnatmake makeinfl
+</pre>
+
+<p>
+This produces executables for WORDS, MAKEDICT, MAKESTEM, MAKEEFIL, and MAKEINFL.  
+Executing the latter four against the input respectively of 
+
+<pre>
+DICTLINE.GEN
+STEMLIST.GEN
+EWDSLIST.GEN
+INFLECTS.LAT
+</pre>
+
+<p>
+(when they ask for DICTIONARY say G) producing 
+
+<pre>
+DICTFILE.GEN
+STEMFILE.GEN
+INDXFILE.GEN
+EWDSFILE.GEN
+INFLECTS.SEC
+</pre>
+
+<p>
+Along with ADDONS.LAT and UNIQUES.LAT, this is the set of data for WORDS.  
+<p>
+The only problem that has appeared on porting so far is that one must be 
+careful of file names.  Problems sometimes turn up but have been easily 
+rectified by inspection.  All of my systems are case-independent on file 
+names.  If one is running in a case-dependent system (UNIX), this is a 
+point to check.  Note that the data files are capitalized, source files 
+are not.  
+
+
+
+<p>The source is in Ada and therefore very readable, which is not claimed for the 
+logic which is my, not Ada's, fault.  The source and data are freely available
+for anyone to use for any purpose.  It may be converted to other
+languages, used in pieces, or modified in any way without further permission
+or notification.  
+
+<p>There is one oddity that the reader may remark upon.  The code is loaded
+with PUT/print statements which are now commented out.   These were used at
+some time for debug purposes and were just left in.  They (mostly) are left
+justified and may fairly easily be removed for a cleaner presentation.
+Further there are many blocks of code which during development have been
+moved or removed, but have in their previous place been left commented.
+This is also messy.  I cannot really justify not having fixed this, but there it is.
+
+<!--
+<P>
+For comments mail to 
+<A HREF="mailto:whitaker@erols.com"> <B>whitaker@erols.com</B></A><BR>
+
+-->
+
+<h3>Recent Versions</h3>
+
+<p><b>October 2006 - New release of Version 1.97F.</b>
+There is no change in program.  Only change is some corrections to the dictionary
+(thanks to John White and Jim Stacey).  The version number is not changed. 
+
+<p><b>September 2006 - Version 1.97F release.</b>
+This update contains corrections prompted by user feedback
+and a somewhat expanded dictionary of 39000 entries.
+
+<p><b>August 2005 - Version 1.97Ed last release.</b>
+This is just 1.97E with some corrections prompted by user feedback.
+The dictionary is somewhat larger - 38000.
+There is very little algorithm growth. 
+
+<p><b>March 2005 - Version 1.97Ec release.</b>
+This is just 1.97E with some corrections prompted by user feedback.
+There is no significant algorithm or vocabulary growth, but the 
+changes are worth the reload. 
+
+<p>December 2004 - Version 1.97E release.
+New version has increased dictionary to 37000 entries, 
+including more ecclesiastical, medieval, and modern Latin.  
+Most of the increase was supplied by John White.
+There is now a primitive English-to-Latin capability.  
+Changes in parameters and defaults will require users to reset mode files.
+
+
+<hr>
+<p>
+13 July 2002 - Version 1.97 still - This very slight update of the code 
+and a very few more entries in the dictionary.  It now takes two 
+RETURN/ENTERs to quit the program.  The only significant improvement is an
+attempt to regularize the dictionary.  Most a/an/the articles have been 
+removed, especialy from the begining of a meaning.  Round () and square []
+brackets are now uniform in application.  <br>
+<p>
+1 Janurary 2002 - Version 1.97 still - This very slight update of the code
+is to correct a few horrible mistakes, which apparently have no real 
+affect.  This is just for form, and to mark a date.  Any new compile 
+should use this version, but no one should go out of his way, unless you 
+have discovered the presence of these errors.  (Some DICT.LOC entries may 
+fail.  Some special cases in listing of dictionary around UNKNOWN may 
+raise exception.) 
+
+<p>
+31 August 2001 - Version 1.97 - Update concentrates on improving 
+presentation of results to the user.  There are no significant 
+improvements to the algorithms, which seem to be quite stable now.  The 
+dictionary is now over 30000 entries, with some increase in late and 
+medieval Latin.  
+<p>
+The main thrust of this version is to simplify the presentation for the 
+average student.  There is now a lot of (default) TRIMming.  
+This is to make the program more friendly to student users.  
+Uncommon/untimely parses are suppressed when there is a much more 
+common/likely solution.  Vocatives and locatives are often suppressed.  
+Where such TRIMming has occured, an asterix (*) follows the output.  The 
+user can cut out the TRIM by setting a # parameter, and this has been made
+easier by placing that parameter first in the # menu.  The dictionary now 
+contains more than 30000 entries.  
+<p>
+The file list_list has been renamed list_sweep, and put_example_line has 
+been removed from list_package to stand alone.  .LAT has been added as an 
+extension to those data files previously without extension.  
+
+<p><b>December 2006 - New release - Version 1.97FC.</b>
+Additional corrections (all by me in this case).  Especially note that the text of
+the meanings has been spellchecked (American spelling).  
+I recommend downloading this version.
+ 
+<p>
+15 October 2000 - Version 1.96 still - Some small changes as a result of 
+user feedback.  A few errors that crept into the latest version causing 
+words previously handled to raise exception were fixed.  There is no 
+change in the dictionary.  The changes are corrections and do not amount 
+to a new version, even a subversion.  The new code may be recognized by 
+successful handling of the word <b>quempiam</b>&quot;. (Thanks DiLaura) 
+
+<p>
+10 September 2000 - Version 1.96 - a small change to the user.  <br>
+Somewhat larger dictionary - additions in medieval and ecclesiastical - I 
+hope for additional in the near future.  One reading the Vulgate will not 
+be disappointed.  <br>
+There is little algorithmic change, but considerable altering and renaming
+or date structures.  This is completely invisible to the user, and 
+essentially invisible to developers, but it makes it important that there 
+be a new version number.  
+<p>
+25 April 2000 Version 1.95a released.  <br>
+The dictionary is somewhat larger than 1.95 <br>
+It has somewhat improved output for complex meanings 
+<p>
+The 1.95 characteristics are continued and: <br>
+It can discriminate on the basis of AGE or FREQ, rejecting unlikely 
+results if there are more common ones.  Controlling parameters are 
+introduced.  Check the defaults for youe particular application.  <br>
+Some output (qui) may be a bit better.  <br>
+One procedure (LIST_LIST) has been added.  It is used by LIST_PACKAGE.  
+
+<h3>
+TOOLS</h3>
+<p>
+There is a <a href="tools.zip"><b>TOOLS.ZIP</b></a> 
+zip of a number of simple text tools (in Ada) used in preparation of WORDS.
+Thses are mostly trivial, but could be helpful to one working with WORDS.
+There is a brief HOWTO text which is far from complete.  I may do better 
+in the next version.
+<p>
+
+<p>
+<br> 
+<a href="words.htm">
+<b>Return to WORDS home<b></a>
+
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 16:16:54 Mar 28, 2023 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 16:59:14 Aug 19, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  capture_cache.get: 0.432
+  load_resource: 428.009
+  PetaboxLoader3.resolve: 409.405
+  PetaboxLoader3.datanode: 17.907
+-->

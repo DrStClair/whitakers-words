@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2N_sDSC0" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=o9P2E1FK" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://archives.nd.edu/whitaker/old/wordsos2.htm","20230328161654","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1680020214");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>WORDS for OS2</title>
+<link href="/web/20230328161654cs_/http://archives.nd.edu/default.css" media="screen" rel="stylesheet" type="text/css"/> 
+</head><h1>WORDS - Version 1.97 for OS/2 (i386)<br/>
+ LATIN-to-ENGLISH DICTIONARY PROGRAM</h1>
+<h2>William Whitaker</h2>
+<p></p>
+<h3>This page provides instructions for downloading the WORDS Latin-to-English dictionary program for the PC running OS/2.</h3>
+<p><span style="font-weight: bold;">Ported to OS/2 by Fr. Mike Thompson (mbt@gator.net)</span><br/>
+</p>
+<p>The latest version, 1.97, was released on August 30, 2001. W.W. slipped in a bug fix on January 1, 2002 which did not result in a change in the version number.</p>
+<h3>Downloading</h3>
+<p>A .zip file for the program and data is located at the <a href="https://web.archive.org/web/20230328161654/http://hobbes.nmsu.edu/download/pub/os2/apps/misc/words-1.97-os2.zip">Hobbes OS/2 archive</a>. Go there and download the file words-1.97-os2.zip.</p>
+<p>All you need to do to install the package is make a directory for it, extract the distribution ZIP file into the directory, and make a desktop program object that executes WORDS.EXE. (Anssi Blomqvist's Program Creator works fine for this.) Just be sure to set the program object's startup directory to the directory you're using.</p>
+<p>At the minimum, the following files must all live in the same directory:</p>
+<pre><code>  
+          WORDS.EXE
+          ADDONS.LAT
+          DICTFILE.GEN
+          INDXFILE.GEN
+          INFLECTS.SEC
+          STEMFILE.GEN
+          UNIQUES.LAT</code></pre>
+<p>Since Words uses the standard I/O streams rather than the OS/2 VIO API, you can redirect the input and/or output as you wish. The only restriction is that the current directory must contain all the supporting files.</p>
+<h3>Output</h3>
+<p>Words is a text-mode dictionary program which translates and analyzes Latin words entered from the keyboard or a text file.</p>
+<p>For each word entered, the program identifies all the possible interpretations of the word, then, for each interpretation, makes an analysis of the word (part of speech, declension, conjugation, case, tense, voice, etc.) and gives the usual meaning of the root form. As an example, given the word &quot;amas,&quot; Words produces the following output:</p>
+<pre><code>        am.as                N      1 1 ACC P F
+        ama, amae  N  F    lesser
+        bucket; water bucket; (esp. fireman&#39;s bucket);
+
+        am.as                V      1 1 PRES ACTIVE  IND 2 S
+        amo, amare, amavi, amatus  V
+        love, like; fall in love with; be fond of; have a tendency to;
+</code></pre>
+
+<p>This shows that &quot;amas&quot; can be interpreted in two different ways:</p>
+<ul>
+<li>  1. as a noun (ama=bucket; first declension; feminine accusative plural; stem
+    &quot;am&quot;, ending &quot;as&quot;; principal parts ama, amae), or</li>
+<li>  2. as a verb (amare=to love; first conjugation; second-person singular
+    present active indicative; stem &quot;am&quot;, ending &quot;as&quot;; principal parts
+    amo, amare, amavi, amatus).</li>
+</ul>
+
+<h3>The Port</h3>
+<p>This port of the program to OS/2 involved *no* programming effort. Don't look for OS/2 patches to the source code: there aren't any. It all worked the first try. The only &quot;hard&quot; thing I did was write the file you are reading.</p>
+<p>I used EMX 0.9d fix-level 4, GCC 2.8.1, and Gnat 3.13p to compile Words. This Gnat version is available from <a href="https://web.archive.org/web/20230328161654/ftp://cs.nyu.edu/pub/gnat/3.13p/contrib/os2/">NYU ftp</a>. The write-up for the roll-your-own compilation of Words is at <a href="wordsdev.htm">WORDSDEV</a> and includes the source archive. It's all frightfully easy.</p>
+<h3>Contacts</h3>
+<p>If your problem is an OS/2 issue, <a href=":mailto:mbt@gator.net%22">contact me</a>.</p>
+<pre><code>    Fr. Mike Thompson
+    mbt@gator.net   
+</code></pre>
+<p><a href="words.htm"><strong>Return to WORDS home</strong></a></p>
+</body></html>
+<!--
+     FILE ARCHIVED ON 16:16:54 Mar 28, 2023 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 17:00:27 Aug 19, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  capture_cache.get: 8.653
+  load_resource: 661.249
+  PetaboxLoader3.resolve: 376.683
+  PetaboxLoader3.datanode: 283.785
+-->

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2N_sDSC0" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=o9P2E1FK" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://archives.nd.edu/whitaker/old/wordsdos.htm","20230403181357","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1680545637");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>WORDS (LATIN) for DOS</title>
+<link href="/web/20230403181357cs_/http://archives.nd.edu/default.css" media="screen" rel="stylesheet" type="text/css"/> 
+</head>
+<body>
+<h1>WORDS - Version 1.97 - DOS<br/>
+ LATIN-to-ENGLISH DICTIONARY PROGRAM</h1>
+<p></p>
+<h2>William Whitaker</h2>
+<h3>This page provides a downloadable Latin-to-English dictionary program for a DOS PC. For regular users, the file to download is:<br/>
+
+<br/><a href="dk-dos.zip"><strong>dk-dos.zip</strong></a><br/>
+
+<!--
+ <a href="dk1dos.exe"><strong>DK1DOS.EXE</strong></a><br />
+ <a href="dk2dos.exe"><strong>DK2DOS.EXE</strong></a><br />
+--> 
+<br/>
+ Full instructions below.</h3>
+<h3><em>Recent Additions</em></h3>
+<p></p>
+<h4>15 September 2001- Version 1.97</h4>
+<p>The DOS WORDS code has been reduced slightly from the Windows version in order that it might operate within the 640KB DOS limitation without extensions. There is, as before, modification of the parameter input and the help. This has no affect on operation or capability. It does carry an extra help file, rather than having the help coded in.</p>
+<p>It is, however, a reduction in facilities by eliminating the DO_COMPOUNDS, DO_EXAMPLES, DO_STEMS_FOR_UNKNOWNS, and some TRICKS so it will run in regular DOS situations. The full version will generate too many STORAGE_ERRORs. However it contains the full dictionary and word construction. The change from the previous (also reduced) version is that TRICKS have been eliminated. This is not as much of a problem as it once might have been. The dictionary is getting to be quite extensive and should take care of all but the most demanding user. There is some possibility that offloading to preprocessing might allow recovery of some deleted facilities in a future version. This reduction allows the program to run in DOS systems having about 600KB of more FREE MEMORY. Check your system by running CHKDSK. Memory may be occupied by still resident programs (initiated at startup, probably in AUTOEXEC.ABT) you are not using at the time. Eliminate any that you can, if sufficient memory is not free.</p>
+<p>If free memory in insufficient to run without excessive STORAGE_ERROR, a MINWORDS version, further crippled by eliminating dictionary forms and the output cleanup that was the major algorithmic change in 1.97. The full dictionary is still active.</p>
+
+<p>The program and the data are in two self-extracting files inside this zip file:</p>
+
+<p><a href="dk-dos.zip"><strong>dk-dos.zip</strong></a></p>
+
+<!-- 
+ <a href="dk1dos.exe"><strong>DK1DOS.EXE</strong></a><br />
+ <a href="dk2dos.exe"><strong>DK2DOS.EXE</strong></a></p>
+-->
+
+<p>The purpose of having two files is is that individually they are less than the capacity of a 3 1/2&quot; floppy, so that you can copy them and pass them on to a friend who might not have net capability.</p>
+<p>These .EXE files, executed on your machine will produce about 12 MB of program and data files (and then may be discarded).</p>
+<p>It is usually good practice to make a subdirectory (to keep things together) and copy the .EXE into it, then run them in that subdirectory.</p>
+<p>The files created are:</p>
+<pre><code>        WORDS.EXE
+        MEANINGS.EXE
+        MINWORDS.EXE
+
+        WORDSDOS.TXT
+        WORDSDOC.TXT
+
+        INFLECTS.SEC
+        ADDONS.LAT
+        UNIQUES.LAT
+        DICTFILE.GEN
+        INDXFILE.GEN
+        STEMFILE.GEN</code></pre>
+<p>The main program created is WORDS.EXE. Run thats to do Latin-to-English word translations. The output looks like this:</p>
+
+<pre><code>        =&gt;amo
+
+        am.o             V      1 1 PRES ACTIVE  IND 1 S X       
+        amo, amare, amavi, amatus
+        love, like; fall in love with; be fond of; have a tendency to
+</code></pre>
+
+<p>There is a WORDSDOC.TXT ASCII text file of the net HTML documentation in <a href="wordsdoc.htm"><strong>WORDSDOC.HTM</strong></a>, since it is expected that those running on DOS systems might not have an intenet browser installed, but can have the program copied off the net on a friend's machine. This is stand-alone, it is not callable from the WORDS program.</p>
+<p>MEANINGS.EXE, giving only the dictionary form and meaning, is also minimized.</p>
+<p>WORDS for DOS executes on a IBM-compatible PC, 386 or better, running DOS. WORDS is disk oriented, so a fast disk, a RAMDISK, or caching helps. It requires as much memory as possible, or it will raise (somewhat recoverable) STORAGE_ERROR.</p>
+<p>The present version is 1.97 and replaces a previous version. The main user difference is mostly in an improved dictionary and somewhat cleaner TRIMmed output.</p>
+<h4>MEANINGS ONLY</h4>
+<p>There are academic situations in which it would be inappropriate for the student to have access to the parsed forms information, but for which the professor might allow simple meanings. For this situation a modification has been made producing a program called MEANINGS, as found in the MORE195D.EXE self-extractor.<br/>
+<br/>
+ This is a version that is crippled to output <strong>ONLY MEANINGS</strong>, no parsing of the word. It is hard-coded so there is no way to output the case/tense, as opposed to the option in WORDS that allows the temporary suppression of this information. It does allow the display of the dictionary form, which seems to be appropriate and allowed for the intended use. If anyone requires a version that supresses the dictionary form, let me know.<br/>
+<br/>
+</p>
+<p><br/>
+ <a href="words.htm">Return to WORDS home</a></p>
+</body></html>
+<!--
+     FILE ARCHIVED ON 18:13:57 Apr 03, 2023 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 16:59:47 Aug 19, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  capture_cache.get: 0.497
+  load_resource: 1940.718
+  PetaboxLoader3.resolve: 1307.103
+  PetaboxLoader3.datanode: 144.421
+-->
