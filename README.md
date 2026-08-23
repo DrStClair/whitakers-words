@@ -28,7 +28,7 @@ Build-time Dependencies
 
 Licensing
 =========
->>>>>>>>>>  ORIGINAL LICENSE TEXT IN MOST SOURCE FILES  <<<<<<<<<<
+==========  ORIGINAL LICENSE TEXT IN MOST SOURCE FILES  ==========
 
 WORDS, a Latin dictionary, by Colonel William Whitaker (USAF, Retired)
 
