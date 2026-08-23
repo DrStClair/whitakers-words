@@ -1,5 +1,3 @@
-[Project Website](http://mk270.github.io/whitakers-words/)
-
 WORDS
 =====
 
