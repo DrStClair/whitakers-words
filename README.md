@@ -1,53 +1,34 @@
 WORDS
 =====
-
-This is a cleaned-up version of the port of William Whitaker's WORDS
-programme, a Latin-English dictionary with inflectional morphology
-support; the original author passed away in 2010, so any and all help
-maintaining the software as development and execution environments evolve
-would be greatly appreciated.
-
-Effectively, this is an exercise in digital preservation.
+William Whitaker's WORDS is a Latin-English dictionary with 
+inflectional morphology support developed by William Whitaker.
+See the original project for more details.
 
 Contributing
 ============
-
-Help is needed maintaining the code for future users; in particular, it
-does not currently support vowel length, so it may be necessary to gather
-a group of Latin experts to adjust its lexicon of several thousand words.
-
-If you contribute, please be sure to indicate your assent to redistributing
-your contributions under the same terms as the existing software; this
-will minimise copyright hassles in the future.
+This is a personal sandbox for experimenting with code and ideas.
+Ideas and suggestions are most welcome.
+Collaboration is not sought at this time but can be considered.
 
 Usage
 =====
-
     $ make
+    $ make alll
     $ bin/words
 
 Documentation
 =============
-
-See the HOWTO.txt file included, 
-and documentation on the [Project Website](http://mk270.github.io/whitakers-words/operational.html)
-
+In progress.
+See original project docs at http://mk270.github.io/whitakers-words/operational.html
 
 Build-time Dependencies
 =======================
-
 * GPRBuild
 * gnat
 
-On a Debian-like system, you can install these roughly as follows:
-
-    $ apt-get install gprbuild gnat
-
-GNAT versions before 4.9 are believed to link against a buggy runtime on
-64-bit platforms, so should be avoided.
-
 Licensing
 =========
+>>>>>>>>>>  ORIGINAL LICENSE TEXT IN MOST SOURCE FILES  <<<<<<<<<<
 
 WORDS, a Latin dictionary, by Colonel William Whitaker (USAF, Retired)
 
