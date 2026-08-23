@@ -282,14 +282,6 @@ procedure Sorter is
       end if;
    end "<";
 
-   procedure Prompt_For_Entry (Entry_Number : String) is
-   begin
-      Put ("Give starting column and size of ");
-      Put (Entry_Number);
-      Put_Line (" significant sort field ");
-      Put ("  with optional sort type and way  => ");
-   end Prompt_For_Entry;
-
    procedure Get_Entry (Mx, Nx  : out Natural;
                         Sx  : out Sort_Type;
                         Wx  : out Way_Type) is
@@ -301,7 +293,7 @@ procedure Sorter is
 
       procedure Echo_Entry is
       begin
-         Put ("                    Sorting on LINE ("); Put (M, 3);
+         Put ("   Sort on columns ("); Put (M, 3);
          Put (" .. "); Put (N, 3); Put (")");
          Put ("  with S = "); Put (S); Put (" and W = "); Put (W);
          New_Line (2);
@@ -709,7 +701,11 @@ procedure Sorter is
                exit Get_Input_File;
             exception
                when others  =>
-                  Put_Line ("   !!!!!!!!!  Try Again  !!!!!!!!");
+                  -- Put_Line ("   !!!!!!!!!  Try Again  !!!!!!!!");
+                  New_Line;
+                  Put_Line ("Error opening file " & Input_Name (1 .. Last) &
+                              ".  Please try again.");
+                  raise;
             end Check_Input;
       end loop Get_Input_File;
 
@@ -738,7 +734,16 @@ procedure Sorter is
             exit Get_Output_File;
          exception
             when others  =>
-               Put_Line ("   !!!!!!!!!  Try Again  !!!!!!!!");
+               -- Put_Line ("   !!!!!!!!!  Try Again  !!!!!!!!");
+               New_Line;
+               Put ("Error opening file ");
+               if Trim (Name (1 .. Last))'Length /= 0  then
+                  Put (Name (1 .. Last));
+               else
+                  Put (Trim (Input_Name));
+               end if;
+               Put (".  Please try again.");
+               raise;
          end Check_Output;
       end loop Get_Output_File;
 
@@ -758,17 +763,26 @@ procedure Sorter is
 begin
 
    New_Line;
-   Put_Line ("Sorts a text file of lines four times on subStrings M .. N");
-   Put_Line (
-     "A)lphabetic (all case) C)ase sensitive, iG)nore separators, U)i_is_vj,");
-   Put_Line ("    iN)teger, F)loating point, S)ection, or P)art entry");
-   Put_Line ("         I)ncreasing or D)ecreasing");
+   Put_Line ("Sorts a text file of lines four times " &
+               "on subStrings in columns M .. N");
+   Put_Line ("Sort Types:  (A)lphabetic (all case)");
+   Put_Line ("             (C)ase sensitive");
+   Put_Line ("             i(G)nore separators");
+   Put_Line ("             (U)i_is_vj");
+   Put_Line ("             i(N)teger");
+   Put_Line ("             (F)loating point");
+   Put_Line ("             (S)ection");
+   Put_Line ("             (P)art entry");
+   Put_Line ("Way Types:   (I)ncreasing or (D)ecreasing");
    New_Line;
 
    Open_File_For_Input (Input, "What file to sort from => ");
    New_Line;
 
-   Prompt_For_Entry ("first");
+   Put_Line ("For each sort give M N S W for start col, size, sort type, way.");
+   Put_Line ("Sort and Way are optional.");
+
+   Put ("M N S W for 1st sort => ");
    begin
       Get_Entry (M1, N1, S1, W1);
    exception
@@ -779,11 +793,11 @@ begin
    end;
 
    begin
-      Prompt_For_Entry ("second");
+      Put ("M N S W for 2nd sort => ");
       Get_Entry (M2, N2, S2, W2);
-      Prompt_For_Entry ("third");
+      Put ("M N S W for 3rd sort => ");
       Get_Entry (M3, N3, S3, W3);
-      Prompt_For_Entry ("fourth");
+      Put ("M N S W for 4th sort => ");
       Get_Entry (M4, N4, S4, W4);
    exception
       --when Program_Error  =>
@@ -796,7 +810,7 @@ begin
 
    --PUT_LINE ("CREATING WORK FILE");
    New_Line;
-   Create (Work, Inout_File, "WORK.");
+   Create (Work, Inout_File, "WORK.WRK");
    Put_Line ("CREATED  WORK FILE");
 
    while not End_Of_File (Input)  loop
