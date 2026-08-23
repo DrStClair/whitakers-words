@@ -14,7 +14,7 @@
 -- All parts of the WORDS system, source code and data files, are made freely
 -- available to anyone who wishes to use them, for whatever purpose.
 
-with Text_IO;
+with Ada.Text_IO;
 with Latin_Utils.Strings_Package; use Latin_Utils.Strings_Package;
 -- with Latin_Utils.Latin_File_Names; use Latin_Utils.Latin_File_Names;
 with Latin_Utils.Inflections_Package; use Latin_Utils.Inflections_Package;
@@ -22,10 +22,10 @@ with Latin_Utils.Dictionary_Package; use Latin_Utils.Dictionary_Package;
 -- with line_stuff; use line_stuff;
 -- with dictionary_form;
 procedure Uniqpage is
-   use Text_IO;
+   use Ada.Text_IO;
    use Kind_Entry_IO;
 
-   Uniques_File, Uniqpage : Text_IO.File_Type;
+   Uniques_File, Uniqpage : Ada.Text_IO.File_Type;
 
    S : constant String (1 .. 400) := (others => ' ');
    Line : String (1 .. 400) := (others => ' ');
@@ -39,13 +39,13 @@ procedure Uniqpage is
    Mean : Meaning_Type;
 
    procedure Get_Line_Unique
-     (Input : in Text_IO.File_Type;
+     (Input : in Ada.Text_IO.File_Type;
       S     : out String;
       Last  : out Natural)
    is
    begin
       Last := 0;
-      Text_IO.Get_Line (Input, S, Last);
+      Ada.Text_IO.Get_Line (Input, S, Last);
       -- FIXME: this if statement was commented out, because it triggered
       -- warning "if statement has no effect". I didn't delete it because quite
       -- possibly author wanted it to do something. Question is what?
@@ -88,24 +88,24 @@ begin
       --
       --
 
-      Text_IO.Put (Uniqpage, "#" & Stem);
+      Ada.Text_IO.Put (Uniqpage, "#" & Stem);
 
       Quality_Record_IO.Put (Uniqpage, Qual);
 
       -- PART := (V, (QUAL.V.CON, KIND.V_KIND));
 
       if (Qual.Pofs = V)  and then  (Kind.V_Kind in Gen .. Perfdef)  then
-         Text_IO.Put (Uniqpage, "  " &
+         Ada.Text_IO.Put (Uniqpage, "  " &
            Verb_Kind_Type'Image (Kind.V_Kind) & "  ");
       end if;
 
-      Text_IO.Put (Uniqpage, " [");
+      Ada.Text_IO.Put (Uniqpage, " [");
       Age_Type_IO.Put (Uniqpage, Tran.Age);
       Area_Type_IO.Put (Uniqpage, Tran.Area);
       Geo_Type_IO.Put (Uniqpage, Tran.Geo);
       Frequency_Type_IO.Put (Uniqpage, Tran.Freq);
       Source_Type_IO.Put (Uniqpage, Tran.Source);
-      Text_IO.Put (Uniqpage, "]");
+      Ada.Text_IO.Put (Uniqpage, "]");
 
       Put (Uniqpage, " :: ");
       Put_Line (Uniqpage, Mean);
@@ -115,7 +115,7 @@ begin
 
    Close (Uniqpage);
 exception
-   when Text_IO.Data_Error  =>
+   when Ada.Text_IO.Data_Error  =>
       null;
    when others =>
       Put_Line (S (1 .. Last));

@@ -15,14 +15,14 @@
 -- available to anyone who wishes to use them, for whatever purpose.
 
 with Ada.Integer_Text_IO;
-with Text_IO;
+with Ada.Text_IO;
 with Latin_Utils.Strings_Package; use Latin_Utils.Strings_Package;
 with Latin_Utils.Latin_File_Names; use Latin_Utils.Latin_File_Names;
 with Latin_Utils.Inflections_Package; use Latin_Utils.Inflections_Package;
 with Latin_Utils.Dictionary_Package; use Latin_Utils.Dictionary_Package;
 -- with Support_Utils.Line_Stuff; use Support_Utils.Line_Stuff;
 procedure Dictflag is
-   use Text_IO;
+   use Ada.Text_IO;
    use Dictionary_Entry_IO;
    use Part_Entry_IO;
    use Age_Type_IO;
@@ -59,7 +59,7 @@ procedure Dictflag is
    Source_Array : array (Source_Type'Range) of Integer := (others => 0);
 
    -- dictfile : Dict_IO.File_Type;
-   Input, Output : Text_IO.File_Type;
+   Input, Output : Ada.Text_IO.File_Type;
    De : Dictionary_Entry;
 
    S, Line : String (1 .. 400) := (others => ' ');
@@ -89,7 +89,7 @@ begin
          D_K := Special;
       else
          Put_Line ("No such dictionary");
-         raise Text_IO.Data_Error;
+         raise Ada.Text_IO.Data_Error;
       end if;
    end if;
 
@@ -152,54 +152,54 @@ begin
       end if;
    end loop;
 
-   Text_IO.Put (Output, "Number of lines in DICTLINE "  & Ext (D_K) & "  ");
+   Ada.Text_IO.Put (Output, "Number of lines in DICTLINE "  & Ext (D_K) & "  ");
    Ada.Integer_Text_IO.Put (Output, Integer (J));
-   Text_IO.New_Line (Output);
+   Ada.Text_IO.New_Line (Output);
 
-   Text_IO.New_Line (Output, 4);
-   Text_IO.Put_Line (Output, "AGE");
+   Ada.Text_IO.New_Line (Output, 4);
+   Ada.Text_IO.Put_Line (Output, "AGE");
    for I in Age_Type'Range  loop
-      Text_IO.Put (Output, Age_Type'Image (I));
-      Text_IO.Set_Col (Output, 10);
-      Text_IO.Put_Line (Output, Integer'Image (Age_Array (I)));
+      Ada.Text_IO.Put (Output, Age_Type'Image (I));
+      Ada.Text_IO.Set_Col (Output, 10);
+      Ada.Text_IO.Put_Line (Output, Integer'Image (Age_Array (I)));
    end loop;
 
-   Text_IO.New_Line (Output, 4);
-   Text_IO.Put_Line (Output, "AREA");
+   Ada.Text_IO.New_Line (Output, 4);
+   Ada.Text_IO.Put_Line (Output, "AREA");
    for I in Area_Type'Range  loop
-      Text_IO.Put (Output, Area_Type'Image (I));
-      Text_IO.Set_Col (Output, 10);
-      Text_IO.Put_Line (Output, Integer'Image (Area_Array (I)));
+      Ada.Text_IO.Put (Output, Area_Type'Image (I));
+      Ada.Text_IO.Set_Col (Output, 10);
+      Ada.Text_IO.Put_Line (Output, Integer'Image (Area_Array (I)));
    end loop;
 
-   Text_IO.New_Line (Output, 4);
-   Text_IO.Put_Line (Output, "GEO");
+   Ada.Text_IO.New_Line (Output, 4);
+   Ada.Text_IO.Put_Line (Output, "GEO");
    for I in Geo_Type'Range  loop
-      Text_IO.Put (Output, Geo_Type'Image (I));
-      Text_IO.Set_Col (Output, 10);
-      Text_IO.Put_Line (Output, Integer'Image (Geo_Array (I)));
+      Ada.Text_IO.Put (Output, Geo_Type'Image (I));
+      Ada.Text_IO.Set_Col (Output, 10);
+      Ada.Text_IO.Put_Line (Output, Integer'Image (Geo_Array (I)));
    end loop;
 
-   Text_IO.New_Line (Output, 4);
-   Text_IO.Put_Line (Output, "FREQ");
+   Ada.Text_IO.New_Line (Output, 4);
+   Ada.Text_IO.Put_Line (Output, "FREQ");
    for I in Frequency_Type'Range  loop
-      Text_IO.Put (Output, Frequency_Type'Image (I));
-      Text_IO.Set_Col (Output, 10);
-      Text_IO.Put_Line (Output, Integer'Image (Freq_Array (I)));
+      Ada.Text_IO.Put (Output, Frequency_Type'Image (I));
+      Ada.Text_IO.Set_Col (Output, 10);
+      Ada.Text_IO.Put_Line (Output, Integer'Image (Freq_Array (I)));
    end loop;
 
-   Text_IO.New_Line (Output, 4);
-   Text_IO.Put_Line (Output, "SOURCE");
+   Ada.Text_IO.New_Line (Output, 4);
+   Ada.Text_IO.Put_Line (Output, "SOURCE");
    for I in Source_Type'Range  loop
-      Text_IO.Put (Output, Source_Type'Image (I));
-      Text_IO.Set_Col (Output, 10);
-      Text_IO.Put_Line (Output, Integer'Image (Source_Array (I)));
+      Ada.Text_IO.Put (Output, Source_Type'Image (I));
+      Ada.Text_IO.Set_Col (Output, 10);
+      Ada.Text_IO.Put_Line (Output, Integer'Image (Source_Array (I)));
    end loop;
 
    Close (Output);
 
 exception
-   when Text_IO.Data_Error  =>
+   when Ada.Text_IO.Data_Error  =>
       null;
    when others =>
       Put_Line (S (1 .. Last));

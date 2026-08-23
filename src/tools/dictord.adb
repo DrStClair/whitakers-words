@@ -15,7 +15,7 @@
 -- available to anyone who wishes to use them, for whatever purpose.
 
 with Ada.Integer_Text_IO;
-with Text_IO;
+with Ada.Text_IO;
 with Latin_Utils.Strings_Package; use Latin_Utils.Strings_Package;
 --with Latin_Utils.Latin_File_Names; use Latin_Utils.Latin_File_Names;
 with Latin_Utils.Inflections_Package; use Latin_Utils.Inflections_Package;
@@ -26,7 +26,7 @@ procedure Dictord is
    --  DICTORD.IN -> DICTORD.OUT
    --  Takes DICTLINE form, puts # and dictionary form at beginning,
    --  a file that can be sorted to produce word order of paper dictionary
-   use Text_IO;
+   use Ada.Text_IO;
    use Dictionary_Entry_IO;
    use Part_Entry_IO;
    use Age_Type_IO;
@@ -38,7 +38,7 @@ procedure Dictord is
    Start_Stem_4  : constant := Start_Stem_3 + Max_Stem_Size + 1;
    Start_Part    : constant := Start_Stem_4 + Max_Stem_Size + 1;
 
-   Input, Output : Text_IO.File_Type;
+   Input, Output : Ada.Text_IO.File_Type;
    De : Dictionary_Entry;
 
    S : String (1 .. 400) := (others => ' ');
@@ -96,7 +96,7 @@ begin
 
    Close (Output);
 exception
-   when Text_IO.Data_Error  =>
+   when Ada.Text_IO.Data_Error  =>
       null;
    when others =>
       Put_Line (S (1 .. Last));

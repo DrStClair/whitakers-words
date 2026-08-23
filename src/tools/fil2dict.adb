@@ -14,14 +14,14 @@
 -- All parts of the WORDS system, source code and data files, are made freely
 -- available to anyone who wishes to use them, for whatever purpose.
 
-with Text_IO;
+with Ada.Text_IO;
 with Latin_Utils.Strings_Package; use Latin_Utils.Strings_Package;
 with Latin_Utils.Latin_File_Names; use Latin_Utils.Latin_File_Names;
 --with Latin_Utils.Inflections_Package; use Latin_Utils.Inflections_Package;
 with Latin_Utils.Dictionary_Package; use Latin_Utils.Dictionary_Package;
 -- with Support_Utils.Line_Stuff; use Support_Utils.Line_Stuff;
 procedure Fil2dict is
-   use Text_IO;
+   use Ada.Text_IO;
    use Dictionary_Entry_IO;
    use Dict_IO;
 
@@ -32,14 +32,14 @@ procedure Fil2dict is
    Last : Integer := 0;
 
    Dictfile : Dict_IO.File_Type;
-   Dictline : Text_IO.File_Type;
+   Dictline : Ada.Text_IO.File_Type;
 
 begin
    Put_Line (
      "Takes a DICTFILE.D_K and reconstructs the DICTLINE.D_K it came from");
 
    Put ("What dictionary to list, GENERAL or SPECIAL  (Reply G or S) =>");
-   Text_IO.Get_Line (Line, Last);
+   Ada.Text_IO.Get_Line (Line, Last);
    if Last > 0  then
       if Trim (Line (1 .. Last))(1) = 'G'  or else
         Trim (Line (1 .. Last))(1) = 'g'
@@ -51,7 +51,7 @@ begin
          D_K := Special;
       else
          Put_Line ("No such dictionary");
-         raise Text_IO.Data_Error;
+         raise Ada.Text_IO.Data_Error;
       end if;
    end if;
 

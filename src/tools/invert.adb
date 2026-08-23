@@ -15,7 +15,7 @@
 -- available to anyone who wishes to use them, for whatever purpose.
 
 with Ada.Integer_Text_IO;
-with Text_IO; use Text_IO;
+with Ada.Text_IO; use Ada.Text_IO;
 with Latin_Utils.Strings_Package; use Latin_Utils.Strings_Package;
 procedure Invert is
    Line, Parm : String (1 .. 250);

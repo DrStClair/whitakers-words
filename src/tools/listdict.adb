@@ -15,14 +15,14 @@
 -- available to anyone who wishes to use them, for whatever purpose.
 
 with Ada.Integer_Text_IO;
-with Text_IO;
+with Ada.Text_IO;
 with Latin_Utils.Strings_Package; use Latin_Utils.Strings_Package;
 -- with Latin_Utils.Latin_File_Names; use Latin_Utils.Latin_File_Names;
 with Latin_Utils.Inflections_Package; use Latin_Utils.Inflections_Package;
 with Latin_Utils.Dictionary_Package; use Latin_Utils.Dictionary_Package;
 -- with line_stuff; use line_stuff;
 procedure Listdict is
-   use Text_IO;
+   use Ada.Text_IO;
    use Dictionary_Entry_IO;
    use Part_Entry_IO;
    use Age_Type_IO;
@@ -40,7 +40,7 @@ procedure Listdict is
      Start_Part +
      Integer (Part_Entry_IO.Default_Width + 1);
 
-   Input, Output : Text_IO.File_Type;
+   Input, Output : Ada.Text_IO.File_Type;
    De : Dictionary_Entry;
 
    S : String (1 .. 400) := (others => ' ');
@@ -49,9 +49,9 @@ procedure Listdict is
    J : Natural := 0;
 
 begin
-   Text_IO.Put_Line ("LISTDICT takes a WORDS LISTDICT.IN in LIN" &
+   Ada.Text_IO.Put_Line ("LISTDICT takes a WORDS LISTDICT.IN in LIN" &
      " (WORDS DICTLINE) form and ");
-   Text_IO.Put_Line ("    produces LISTDICT.OUT in ED (3 line) form");
+   Ada.Text_IO.Put_Line ("    produces LISTDICT.OUT in ED (3 line) form");
 
    Create (Output, Out_File, "LISTDICT.OUT");
    Open (Input, In_File, "LISTDICT.IN");
@@ -108,7 +108,7 @@ begin
 
    Close (Output);
 exception
-   when Text_IO.Data_Error  =>
+   when Ada.Text_IO.Data_Error  =>
       null;
    when others =>
       Put_Line (S (1 .. Last));

@@ -15,7 +15,7 @@
 -- available to anyone who wishes to use them, for whatever purpose.
 
 with Ada.Integer_Text_IO;
-with Text_IO;
+with Ada.Text_IO;
 with Latin_Utils.Strings_Package; use Latin_Utils.Strings_Package;
 --with latin_file_names; use latin_file_names;
 with Latin_Utils.Inflections_Package; use Latin_Utils.Inflections_Package;
@@ -25,7 +25,7 @@ procedure Listord is
    --   LISTORD    Takes # (DICTORD) long format to ED file
    --   (3 lines per entry so it is all on one screen)
    --   LISTORD.IN -> LISTORD.OUT
-   use Text_IO;
+   use Ada.Text_IO;
    use Dictionary_Entry_IO;
    use Part_Entry_IO;
    use Age_Type_IO;
@@ -43,7 +43,7 @@ procedure Listord is
      Start_Part +
      Integer (Part_Entry_IO.Default_Width + 1);
 
-   Input, Output : Text_IO.File_Type;
+   Input, Output : Ada.Text_IO.File_Type;
    De : Dictionary_Entry;
 
    S : String (1 .. 400) := (others => ' ');
@@ -114,7 +114,7 @@ begin
 
    Close (Output);
 exception
-   when Text_IO.Data_Error  =>
+   when Ada.Text_IO.Data_Error  =>
       null;
    when others =>
       Put_Line (S (1 .. Last));

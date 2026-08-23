@@ -15,14 +15,14 @@
 -- available to anyone who wishes to use them, for whatever purpose.
 
 with Ada.Integer_Text_IO;
-with Text_IO;
+with Ada.Text_IO;
 with Latin_Utils.Strings_Package; use Latin_Utils.Strings_Package;
 with Latin_Utils.Inflections_Package; use Latin_Utils.Inflections_Package;
 with Latin_Utils.Dictionary_Package; use Latin_Utils.Dictionary_Package;
 -- with Support_Utils.Line_Stuff; use Support_Utils.Line_Stuff;
 procedure Check is
    use Ada.Integer_Text_IO;
-   use Text_IO;
+   use Ada.Text_IO;
    use Dictionary_Entry_IO;
    use Part_Entry_IO;
 

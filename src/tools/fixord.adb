@@ -14,16 +14,16 @@
 -- All parts of the WORDS system, source code and data files, are made freely
 -- available to anyone who wishes to use them, for whatever purpose.
 
-with Text_IO;
+with Ada.Text_IO;
 with Latin_Utils.Strings_Package; use Latin_Utils.Strings_Package;
 -- with Latin_Utils.Latin_File_Names; use Latin_Utils.Latin_File_Names;
 -- with Latin_Utils.Inflections_Package; use Latin_Utils.Inflections_Package;
 -- with Latin_Utils.Dictionary_Package; use Latin_Utils.Dictionary_Package;
 -- with line_stuff; use line_stuff;
 procedure Fixord is
-   use Text_IO;
+   use Ada.Text_IO;
 
-   Input, Output : Text_IO.File_Type;
+   Input, Output : Ada.Text_IO.File_Type;
 
    Blank_Line : constant String (1 .. 400) := (others => ' ');
    S : String (1 .. 400) := (others => ' ');
@@ -51,7 +51,7 @@ begin
 
    Close (Output);
 exception
-   when Text_IO.Data_Error  =>
+   when Ada.Text_IO.Data_Error  =>
       Close (Output);
 
 end Fixord;
